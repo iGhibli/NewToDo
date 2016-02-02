@@ -59,10 +59,13 @@
 }
 
 + (void)saveListToListTable:(NSDictionary *)dict {
+    NSString *SQLStr = [NSString stringWithFormat:@"CREATE TABLE A%@ (\"id\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"sort\" INTEGER, \"detailsortid\" INTEGER, \"detailsort\" , \"ischeck\" )",dict[@"sort"]];
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
     [queue inDatabase:^(FMDatabase *db) {
         BOOL result = [db executeUpdate:@"insert into listinfo(name ,image ,sort ,adress) values(:name ,:image ,:sort ,:adress) " withParameterDictionary:dict];
+        BOOL success = [db executeUpdate:SQLStr];
         NSLog(@"%d",result);
+        NSLog(@"%d",success);
     }];
 }
 
@@ -76,11 +79,11 @@
     }];
 }
 
-+ (NSMutableArray *)getDetailModelsFromTable:(NSInteger)tableName With:(NSInteger)sort
++ (NSMutableArray *)getDetailModelsFromTable:(NSInteger)tableName WithSortIndex:(NSInteger)sort
 {
     FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
     [db open];
-    NSString *sqlString = [NSString stringWithFormat:@"select * from A%ld where sort = %ld;",(long)tableName ,(long)sort];
+    NSString *sqlString = [NSString stringWithFormat:@"select * from A%ld where sort = %ld ORDER by detailsortid ASC;",(long)tableName ,(long)sort];
     FMResultSet *result = [db executeQuery:sqlString];
     NSMutableArray *modelArray = [NSMutableArray array];
     while ([result next]) {
@@ -92,17 +95,52 @@
     return modelArray;
 }
 
-#if 0
-+ (void)updataTraveListWithInfoDict:(NSDictionary *)dict
+
++ (ListModel *)getListModelWithListSort:(int)sort {
+    FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    [db open];
+    NSString *sqlString = [NSString stringWithFormat:@"select * from listinfo where sort = %d;",sort];
+    FMResultSet *result = [db executeQuery:sqlString];
+    NSMutableArray *modelArray = [NSMutableArray array];
+    while ([result next]) {
+        NSDictionary *dict = [result resultDictionary];
+        ListModel *listModel = [[ListModel alloc] initListModelWithDict:dict];
+        [modelArray addObject:listModel];
+    }
+    [db close];
+    return modelArray.firstObject;
+}
+
++ (void)updataListWithInfoDict:(NSDictionary *)dict
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
-//    NSString *SQLStr = [NSString stringWithFormat:@"update travellist SET name=%@ ,image=%@ ,sort=%d ,relatedpoi=%@ where sort=%d;",dict[@"name"] ,dict[@"image"] ,[dict[@"sort"] intValue] ,dict[@"relatedpoi"] ,[dict[@"sort"] intValue]];
-    //使用queue提供一个DB
     [queue inDatabase:^(FMDatabase *db) {
-        BOOL result = [db executeUpdate:@"update travellist SET name=:name ,image=:image ,sort=:sort ,relatedpoi=:relatedpoi where sort=:sort;" withParameterDictionary:dict];
+        BOOL result = [db executeUpdate:@"update listinfo SET name=:name ,image=:image ,sort=:sort ,adress=:adress where sort=:sort;" withParameterDictionary:dict];
         NSLog(@"%d",result);
     }];
 }
+
++ (void)saveDetailToTableWithDetailDict:(NSDictionary *)dict
+{
+    NSString *SQLStr = [NSString stringWithFormat:@"insert into A%@(sort, detailsortid, detailsort, ischeck) VALUES(%@, %@, '%@', %@);",dict[@"id"] ,dict[@"sort"] ,dict[@"detailsortid"] ,dict[@"detailsort"] ,dict[@"ischeck"]];
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    [queue inDatabase:^(FMDatabase *db) {
+        BOOL result = [db executeUpdate:SQLStr];
+        NSLog(@"%d",result);
+    }];
+}
+
++ (void)deleteDetailFromTable:(NSInteger)tableName WithDetailSortID:(NSInteger)ID {
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *SQLString = [NSString stringWithFormat:@"delete from A%ld where detailsortid = %ld;",(long)tableName ,ID];
+        BOOL result = [db executeUpdate:SQLString];
+        NSLog(@"%d>>>>%@",result, SQLString);
+    }];
+}
+
+#if 0
+
 
 
 
@@ -133,26 +171,7 @@
 
 
 
-+ (ListModel *)getListModelWithListSort:(int)sort {
-    //创建数据库
-    FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
-    //打开数据库
-    [db open];
-    //查询语句
-    NSString *sqlString = [NSString stringWithFormat:@"select * from %@ where sort = %d;",kTravelList ,sort];
-    //查询并输出结果
-    FMResultSet *result = [db executeQuery:sqlString];
-    NSMutableArray *dictArray = [NSMutableArray array];
-    while ([result next]) {
-        //将一条记录转化为一个字典
-        NSDictionary *dict = [result resultDictionary];
-        ListModel *listModel = [[ListModel alloc] initListModelWithDict:dict];
-        [dictArray addObject:listModel];
-    }
-    //释放资源
-    [db close];
-    return dictArray.firstObject;
-}
+
 
 
 

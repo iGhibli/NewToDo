@@ -29,6 +29,7 @@
 		CC8C04E31C6099270060ADCE /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04E21C6099270060ADCE /* DetailCell.m */; };
 		CC8C04E61C60993B0060ADCE /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04E51C60993B0060ADCE /* DetailModel.m */; };
 		CC8C04E81C60A4040060ADCE /* ToDo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CC8C04E71C60A4040060ADCE /* ToDo.sqlite */; };
+		CC8C04EB1C60AE390060ADCE /* AddDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04EA1C60AE390060ADCE /* AddDetailVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,8 @@
 		CC8C04E41C60993B0060ADCE /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
 		CC8C04E51C60993B0060ADCE /* DetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailModel.m; sourceTree = "<group>"; };
 		CC8C04E71C60A4040060ADCE /* ToDo.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ToDo.sqlite; sourceTree = "<group>"; };
+		CC8C04E91C60AE390060ADCE /* AddDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDetailVC.h; sourceTree = "<group>"; };
+		CC8C04EA1C60AE390060ADCE /* AddDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDetailVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				CC8C04B91C6087650060ADCE /* DetailVC.m */,
 				CC8C04BB1C6087760060ADCE /* ChangInfoVC.h */,
 				CC8C04BC1C6087760060ADCE /* ChangInfoVC.m */,
+				CC8C04E91C60AE390060ADCE /* AddDetailVC.h */,
+				CC8C04EA1C60AE390060ADCE /* AddDetailVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				CC8C04BD1C6087760060ADCE /* ChangInfoVC.m in Sources */,
 				CC8C04D11C60882A0060ADCE /* FMDatabasePool.m in Sources */,
 				CC8C04D21C60882A0060ADCE /* FMDatabaseQueue.m in Sources */,
+				CC8C04EB1C60AE390060ADCE /* AddDetailVC.m in Sources */,
 				CC8C04981C6084980060ADCE /* main.m in Sources */,
 				CC8C04CF1C60882A0060ADCE /* FMDatabase.m in Sources */,
 			);

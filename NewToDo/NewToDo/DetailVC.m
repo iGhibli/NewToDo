@@ -29,6 +29,18 @@ static NSString *detailCellID = @"DetailCellID";
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    _twoDimensionArray = nil;
+    for (int i = 0; i < 11; i++) {
+        NSArray *tempArray = [NSArray array];
+        tempArray = [DataBaseEngine getDetailModelsFromTable:self.sort WithSortIndex:i];
+        if (tempArray.count != 0) {
+            [_twoDimensionArray addObject:tempArray];
+        }
+    }
+    [self.tableView reloadData];
+}
+
 - (void)changeShowAction:(UIButton *)sender
 {
     sender.selected = sender.selected ? NO : YES;
@@ -39,7 +51,7 @@ static NSString *detailCellID = @"DetailCellID";
         _twoDimensionArray = [NSMutableArray array];
         for (int i = 0; i < 11; i++) {
             NSArray *tempArray = [NSArray array];
-            tempArray = [DataBaseEngine getDetailModelsFromTable:self.sort With:i];
+            tempArray = [DataBaseEngine getDetailModelsFromTable:self.sort WithSortIndex:i];
             if (tempArray.count != 0) {
                 [_twoDimensionArray addObject:tempArray];
             }
@@ -49,17 +61,6 @@ static NSString *detailCellID = @"DetailCellID";
 }
 
 #pragma mark - ButtonAction
-- (IBAction)backAction:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)sortShowAction:(UIButton *)sender {
-    sender.selected = sender.selected ? NO:YES;
-}
-
-- (IBAction)addCustomAction:(UIButton *)sender {
-    
-}
 
 #pragma mark - Table view data source
 
@@ -96,11 +97,26 @@ static NSString *detailCellID = @"DetailCellID";
     return 44;
 }
 
+
+#pragma mark - 编辑tableView
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        DetailModel *model = self.twoDimensionArray[indexPath.section][indexPath.row];
+        [self.twoDimensionArray[indexPath.section] removeObjectAtIndex:indexPath.row];
+        [DataBaseEngine deleteDetailFromTable:self.sort WithDetailSortID:[model.detailsortid integerValue]];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 #pragma mark - PushSegue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier  isEqual: @"changeListInfoSegue"]) {
+    if ([segue.identifier isEqualToString:@"changeSegue"]) {
         [segue.destinationViewController setValue:@(self.sort) forKey:@"sort"];
-    }else if ([segue.identifier isEqualToString:@"librarySegue"]) {
+    }else if ([segue.identifier isEqualToString:@"addDetailSegue"]) {
         [segue.destinationViewController setValue:@(self.sort) forKey:@"sort"];
     }
     

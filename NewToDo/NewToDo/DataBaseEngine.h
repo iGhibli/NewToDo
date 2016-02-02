@@ -13,18 +13,22 @@
 
 + (void)saveListToListTable:(NSDictionary *)dict;
 
++ (void)saveDetailToTableWithDetailDict:(NSDictionary *)dict;
+
 + (ListModel *)getListModelWithListSort:(int)sort;
 
 + (NSMutableArray *)getListModelsFromDBTable;
 
-+ (NSMutableArray *)getDetailModelsFromTable:(NSInteger)tableName With:(NSInteger)sort;
++ (NSMutableArray *)getDetailModelsFromTable:(NSInteger)tableName WithSortIndex:(NSInteger)sort;
 
 + (NSMutableArray *)getCityAndCountryFromDBTableWithName:(NSString *)name;
 
 + (void)deleteListFromListTableWithSort:(NSInteger)sort;
 
-+ (void)updataTraveListWithInfoDict:(NSDictionary *)dict;
++ (void)updataListWithInfoDict:(NSDictionary *)dict;
 
 + (NSMutableArray *)getItermModelsFromDBTableWithFenleiid:(NSInteger)index;
+
++ (void)deleteDetailFromTable:(NSInteger)tableName WithDetailSortID:(NSInteger)ID;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  ChangInfoVC.h
+//  AddDetailVC.h
 //  NewToDo
 //
 //  Created by qingyun on 16/2/2.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChangInfoVC : UIViewController
+@interface AddDetailVC : UIViewController
 @property (nonatomic, assign) int sort;
 @end
