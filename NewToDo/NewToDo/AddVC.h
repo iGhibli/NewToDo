@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddVC.h
 //  NewToDo
 //
 //  Created by qingyun on 16/2/2.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface AddVC : UIViewController
+@property (nonatomic, assign) int sort;
 @end
-
