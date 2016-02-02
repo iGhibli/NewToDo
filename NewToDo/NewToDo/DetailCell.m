@@ -25,10 +25,6 @@
     self.detailLabel.text = model.detailsort;
 }
 
-- (IBAction)checkBtnAction:(UIButton *)sender {
-    sender.selected = sender.selected ? NO : YES;
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

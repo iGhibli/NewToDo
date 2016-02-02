@@ -139,86 +139,13 @@
     }];
 }
 
-#if 0
-
-
-
-
-//查询出两个数组中共有的方法（处理表的所有字段与有效字段的交集）
-+(NSArray *)contenKeyWith:(NSArray *)key1 key2:(NSArray *)key2{
-    NSMutableArray *result = [NSMutableArray array];
-    
-    [key1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *key = obj;
-        //比较一个对象是否包含在另外的一个数组中
-        if ([key2 containsObject:key]) {
-            [result addObject:key];
-        }
++ (void)updateDetailCheck:(NSInteger)ischeck ToTable:(NSInteger)tableName WithID:(NSInteger)ID {
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *SQLString = [NSString stringWithFormat:@"update A%ld SET ischeck = %ld where id = %ld;",(long)tableName ,(long)ischeck ,ID];
+        BOOL result = [db executeUpdate:SQLString];
+        NSLog(@"%d>>>>%@",result, SQLString);
     }];
-    return result;
 }
-
-//根据table和字典共有的key，拼接出sql语句
-+(NSString *)sqlStringWithKeys:(NSArray *)keys{
-    //创建字段的sql语句部分
-    NSString *colume = [keys componentsJoinedByString:@", "];
-    //占位部分sql语句部分
-    NSString *values = [keys componentsJoinedByString:@", :"];
-    values = [@":" stringByAppendingString:values];
-    
-    return [NSString stringWithFormat:@"insert into status(%@) values(%@)",colume,values];
-}
-
-
-
-
-
-
-
-+ (NSMutableArray *)getCityAndCountryFromDBTableWithName:(NSString *)name
-{
-    //创建数据库
-    FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
-    //打开数据库
-    [db open];
-    //查询语句
-//    NSString *sqlString = [NSString stringWithFormat:];
-    //查询并输出结果
-    FMResultSet *result = [db executeQuery:@"select name_cn from ? where Rtrim(name_cn) LIKE '%?%'",kCity ,name];
-    NSMutableArray *strArray = [NSMutableArray array];
-    while ([result next]) {
-        NSString *str = [result stringForColumn:0];
-        [strArray addObject:str];
-    }
-    //释放资源
-    [db close];
-    return strArray;
-}
-
-
-
-+ (NSMutableArray *)getItermModelsFromDBTableWithFenleiid:(NSInteger)index
-{
-    //创建数据库
-    FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
-    //打开数据库
-    [db open];
-    //查询语句
-    NSString *sqlString = [NSString stringWithFormat:@"select * from %@ where fenleiid = %d;",kFenLeiAndIterm ,index];
-    //查询并输出结果
-    FMResultSet *result = [db executeQuery:sqlString];
-    NSMutableArray *modelArray = [NSMutableArray array];
-    while ([result next]) {
-        //将一条记录转化为一个字典
-        NSDictionary *dict = [result resultDictionary];
-        ItermModel *model = [[ItermModel alloc]initItermModelWithDict:dict];
-        [modelArray addObject:model];
-    }
-    //释放资源
-    [db close];
-    
-    return modelArray;
-}
-#endif
 
 @end

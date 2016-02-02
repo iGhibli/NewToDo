@@ -31,4 +31,6 @@
 
 + (void)deleteDetailFromTable:(NSInteger)tableName WithDetailSortID:(NSInteger)ID;
 
++ (void)updateDetailCheck:(NSInteger)ischeck ToTable:(NSInteger)tableName WithID:(NSInteger)ID;
+
 @end

@@ -30,6 +30,8 @@
 		CC8C04E61C60993B0060ADCE /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04E51C60993B0060ADCE /* DetailModel.m */; };
 		CC8C04E81C60A4040060ADCE /* ToDo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CC8C04E71C60A4040060ADCE /* ToDo.sqlite */; };
 		CC8C04EB1C60AE390060ADCE /* AddDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04EA1C60AE390060ADCE /* AddDetailVC.m */; };
+		CC8C04EE1C60D8750060ADCE /* DetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04ED1C60D8750060ADCE /* DetailHeader.m */; };
+		CC8C04F01C60D88A0060ADCE /* DetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC8C04EF1C60D88A0060ADCE /* DetailHeader.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,9 @@
 		CC8C04E71C60A4040060ADCE /* ToDo.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ToDo.sqlite; sourceTree = "<group>"; };
 		CC8C04E91C60AE390060ADCE /* AddDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDetailVC.h; sourceTree = "<group>"; };
 		CC8C04EA1C60AE390060ADCE /* AddDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDetailVC.m; sourceTree = "<group>"; };
+		CC8C04EC1C60D8750060ADCE /* DetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailHeader.h; sourceTree = "<group>"; };
+		CC8C04ED1C60D8750060ADCE /* DetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailHeader.m; sourceTree = "<group>"; };
+		CC8C04EF1C60D88A0060ADCE /* DetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailHeader.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +176,9 @@
 				CC8C04DC1C608AF50060ADCE /* ListCell.m */,
 				CC8C04E11C6099270060ADCE /* DetailCell.h */,
 				CC8C04E21C6099270060ADCE /* DetailCell.m */,
+				CC8C04EC1C60D8750060ADCE /* DetailHeader.h */,
+				CC8C04ED1C60D8750060ADCE /* DetailHeader.m */,
+				CC8C04EF1C60D88A0060ADCE /* DetailHeader.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -278,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC8C04F01C60D88A0060ADCE /* DetailHeader.xib in Resources */,
 				CC8C04A61C6084980060ADCE /* LaunchScreen.storyboard in Resources */,
 				CC8C04E81C60A4040060ADCE /* ToDo.sqlite in Resources */,
 				CC8C04A31C6084980060ADCE /* Assets.xcassets in Resources */,
@@ -292,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC8C04EE1C60D8750060ADCE /* DetailHeader.m in Sources */,
 				CC8C04E01C608BA20060ADCE /* ListModel.m in Sources */,
 				CC8C04E61C60993B0060ADCE /* DetailModel.m in Sources */,
 				CC8C04B71C6087490060ADCE /* AddVC.m in Sources */,

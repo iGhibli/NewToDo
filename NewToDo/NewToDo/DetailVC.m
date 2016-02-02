@@ -12,6 +12,7 @@
 #import "DetailCell.h"
 #import "Common.h"
 #import "ChangInfoVC.h"
+#import "DetailHeader.h"
 
 @interface DetailVC ()<UITableViewDataSource ,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,6 +28,8 @@ static NSString *detailCellID = @"DetailCellID";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //tableView注册headerView的xib文件
+    [self.tableView registerNib:[UINib nibWithNibName:@"DetailHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"detailHeaderView"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,6 +64,31 @@ static NSString *detailCellID = @"DetailCellID";
 }
 
 #pragma mark - ButtonAction
+- (IBAction)checkBtnAction:(UIButton *)sender {
+    sender.selected = sender.selected ? NO : YES;
+    [DataBaseEngine updateDetailCheck:sender.selected ToTable:self.sort WithID:[[self getCurrentModelWithButton:sender].ID integerValue]];
+}
+
+/**
+ *  通过当前Button获取当前Button所在Cell的Model
+ *
+ *  @param sender 当前Button
+ *
+ *  @return 当前Cell的Model
+ */
+- (DetailModel *)getCurrentModelWithButton:(UIButton *)sender
+{
+    //获取ContentView
+    UIView *contentView = [sender superview];
+    //获取当前Button所在cell的信息
+    DetailCell *currentCell = (DetailCell *)[contentView superview];
+    //获取当前的IndexPath
+    NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:currentCell];
+    NSLog(@"IndexPath-----%@",currentIndexPath);
+    //得到当前Model
+    DetailModel *currentModel = self.twoDimensionArray[currentIndexPath.section][currentIndexPath.row];
+    return currentModel;
+}
 
 #pragma mark - Table view data source
 
@@ -85,18 +113,26 @@ static NSString *detailCellID = @"DetailCellID";
 }
 
 #pragma mark - SectionHeader
-//section头标题
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    DetailModel *model = self.twoDimensionArray[section][0];
-    NSArray *sortNames = @[@"行前事项" ,@"购物清单" ,@"文件/备份" ,@"资金" ,@"服装" ,@"个护/化妆" ,@"医疗/健康" ,@"电子数码" ,@"杂项" ,@"旅途备忘" ,@"自定义"];
-    return sortNames[[model.sort intValue]];
-}
+////section头标题
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//    DetailModel *model = self.twoDimensionArray[section][0];
+//    NSArray *sortNames = @[@"行前事项" ,@"购物清单" ,@"文件/备份" ,@"资金" ,@"服装" ,@"个护/化妆" ,@"医疗/健康" ,@"电子数码" ,@"杂项" ,@"旅途备忘" ,@"自定义"];
+//    return sortNames[[model.sort intValue]];
+//}
 
 //section头高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 44;
+    return 25;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    DetailHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"detailHeaderView"];
+    NSArray *sortNames = @[@"行前事项" ,@"购物清单" ,@"文件/备份" ,@"资金" ,@"服装" ,@"个护/化妆" ,@"医疗/健康" ,@"电子数码" ,@"杂项" ,@"旅途备忘" ,@"自定义"];
+    NSArray *imageNames = @[@"header_blue" ,@"header_red" ,@"header_green" ,@"header_green" ,@"header_green" ,@"header_green" ,@"header_green" ,@"header_green" ,@"header_green" ,@"header_yellow" ,@"header_gray"];
+    DetailModel *model = self.twoDimensionArray[section][0];
+    [header bindingDetailHeaderViewWithText:sortNames[[model.sort intValue]] AndImage:[UIImage imageNamed:imageNames[[model.sort intValue]]]];
+    return header;
+}
 
 #pragma mark - 编辑tableView
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
