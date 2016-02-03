@@ -79,6 +79,10 @@
     }
 }
 
+- (IBAction)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)imageBtnAction:(UIButton *)sender {
     [self chooseImage];
 }

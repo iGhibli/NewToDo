@@ -69,6 +69,10 @@ static NSString *detailCellID = @"DetailCellID";
     [DataBaseEngine updateDetailCheck:sender.selected ToTable:self.sort WithID:[[self getCurrentModelWithButton:sender].ID integerValue]];
 }
 
+- (IBAction)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 /**
  *  通过当前Button获取当前Button所在Cell的Model
  *

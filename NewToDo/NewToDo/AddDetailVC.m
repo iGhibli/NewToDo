@@ -29,6 +29,10 @@
     self.textField.delegate = self;
 }
 
+- (IBAction)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)saveBtnAction:(UIButton *)sender {
     if (self.textField.text.length != 0) {
         NSArray *tempArray = [DataBaseEngine getDetailModelsFromTable:self.sort WithSortIndex:_currentIndex];
