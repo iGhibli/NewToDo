@@ -87,7 +87,6 @@ static NSString *detailCellID = @"DetailCellID";
     DetailCell *currentCell = (DetailCell *)[contentView superview];
     //获取当前的IndexPath
     NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:currentCell];
-    NSLog(@"IndexPath-----%@",currentIndexPath);
     //得到当前Model
     DetailModel *currentModel = self.twoDimensionArray[currentIndexPath.section][currentIndexPath.row];
     return currentModel;

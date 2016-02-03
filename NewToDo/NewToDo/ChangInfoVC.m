@@ -99,46 +99,13 @@
 //调用相机和图库
 - (void)chooseImage
 {
-    //创建UIAlertController
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选取照片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    //创建AlertAction
-    UIAlertAction *imageAction = [UIAlertAction actionWithTitle:@"从相册选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // 跳转相册页面
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        imagePickerController.delegate = self;
-        imagePickerController.allowsEditing = YES;
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-        [self presentViewController:imagePickerController animated:YES completion:^{}];
-    }];
-    UIAlertAction *photoAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        // 跳转相册页面
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        imagePickerController.delegate = self;
-        imagePickerController.allowsEditing = YES;
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        [self presentViewController:imagePickerController animated:YES completion:^{}];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
+    // 跳转相册页面
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    // 判断是否支持相机，添加对应的Action
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        [alertController addAction:imageAction];
-        [alertController addAction:photoAction];
-        [alertController addAction:cancelAction];
-    }
-    else {
-        [alertController addAction:imageAction];
-        [alertController addAction:cancelAction];
-    }
-    //显示AlertController
-    [self presentViewController:alertController animated:YES completion:^{
-        
-    }];
+    [self presentViewController:imagePickerController animated:YES completion:^{}];
 }
 
 #pragma mark - 照片选取代理

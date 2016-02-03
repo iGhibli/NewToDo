@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC368F7B1C61BA8E00C55C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */; };
 		CC368F811C621DBE00C55C42 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC368F801C621DBE00C55C42 /* SettingVC.m */; };
+		CC368F851C6234FB00C55C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC368F841C6234FB00C55C42 /* Default-568h@2x.png */; };
 		CC8C04981C6084980060ADCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04971C6084980060ADCE /* main.m */; };
 		CC8C049B1C6084980060ADCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C049A1C6084980060ADCE /* AppDelegate.m */; };
 		CC8C04A11C6084980060ADCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8C049F1C6084980060ADCE /* Main.storyboard */; };
@@ -37,9 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CC368F7F1C621DBE00C55C42 /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
 		CC368F801C621DBE00C55C42 /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
+		CC368F841C6234FB00C55C42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CC8C04931C6084980060ADCE /* NewToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8C04971C6084980060ADCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC8C04991C6084980060ADCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		CC8C04961C6084980060ADCE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */,
+				CC368F841C6234FB00C55C42 /* Default-568h@2x.png */,
 				CC8C04E71C60A4040060ADCE /* ToDo.sqlite */,
 				CC8C04D41C60883E0060ADCE /* libsqlite3.0.tbd */,
 				CC8C04A21C6084980060ADCE /* Assets.xcassets */,
@@ -300,7 +300,7 @@
 				CC8C04E81C60A4040060ADCE /* ToDo.sqlite in Resources */,
 				CC8C04A31C6084980060ADCE /* Assets.xcassets in Resources */,
 				CC8C04A11C6084980060ADCE /* Main.storyboard in Resources */,
-				CC368F7B1C61BA8E00C55C42 /* Default-568h@2x.png in Resources */,
+				CC368F851C6234FB00C55C42 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
