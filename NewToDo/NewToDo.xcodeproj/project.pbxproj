@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC368F7B1C61BA8E00C55C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */; };
 		CC8C04981C6084980060ADCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04971C6084980060ADCE /* main.m */; };
 		CC8C049B1C6084980060ADCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C049A1C6084980060ADCE /* AppDelegate.m */; };
 		CC8C04A11C6084980060ADCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8C049F1C6084980060ADCE /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CC8C04931C6084980060ADCE /* NewToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8C04971C6084980060ADCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC8C04991C6084980060ADCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		CC8C04961C6084980060ADCE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */,
 				CC8C04E71C60A4040060ADCE /* ToDo.sqlite */,
 				CC8C04D41C60883E0060ADCE /* libsqlite3.0.tbd */,
 				CC8C04A21C6084980060ADCE /* Assets.xcassets */,
@@ -260,6 +263,7 @@
 				TargetAttributes = {
 					CC8C04921C6084980060ADCE = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 3MNL697K64;
 					};
 				};
 			};
@@ -291,6 +295,7 @@
 				CC8C04E81C60A4040060ADCE /* ToDo.sqlite in Resources */,
 				CC8C04A31C6084980060ADCE /* Assets.xcassets in Resources */,
 				CC8C04A11C6084980060ADCE /* Main.storyboard in Resources */,
+				CC368F7B1C61BA8E00C55C42 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +367,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: dorayo student (93QF9C8P8D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -384,7 +390,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
+				PROVISIONING_PROFILE = "3f2c167e-aa67-460d-a91b-c629193f32a6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -406,6 +412,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: dorayo student (93QF9C8P8D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -421,7 +428,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
+				PROVISIONING_PROFILE = "3f2c167e-aa67-460d-a91b-c629193f32a6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -431,12 +438,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NewToDo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingyun.NewToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -444,12 +453,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NewToDo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingyun.NewToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

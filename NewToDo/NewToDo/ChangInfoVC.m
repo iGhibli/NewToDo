@@ -11,7 +11,7 @@
 #import "DataBaseEngine.h"
 #import "Common.h"
 
-@interface ChangInfoVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
+@interface ChangInfoVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *imageBtn;
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *adress;
@@ -28,6 +28,8 @@
     _name.text = _currentModel.name;
     _adress.text = _currentModel.adress;
     _selectImage = [UIImage imageWithData:(NSData *)_currentModel.icon];
+    self.name.delegate = self;
+    self.adress.delegate = self;
 }
 - (IBAction)determineBtnAction:(UIButton *)sender {
     //未填写ListName
@@ -79,6 +81,15 @@
 
 - (IBAction)imageBtnAction:(UIButton *)sender {
     [self chooseImage];
+}
+
+//取消输入第一响应
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [self.name resignFirstResponder];
+    [self.adress resignFirstResponder];
+    return YES;
 }
 
 //调用相机和图库

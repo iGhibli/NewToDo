@@ -11,7 +11,7 @@
 #import "DataBaseEngine.h"
 #import "DetailModel.h"
 
-@interface AddDetailVC ()<UIPickerViewDataSource ,UIPickerViewDelegate>
+@interface AddDetailVC ()<UIPickerViewDataSource ,UIPickerViewDelegate ,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic, strong) NSArray *dataSource;
@@ -26,6 +26,7 @@
     self.picker.dataSource = self;
     self.dataSource = @[@"行前事项" ,@"购物清单" ,@"文件/备份" ,@"资金" ,@"服装" ,@"个护/化妆" ,@"医疗/健康" ,@"电子数码" ,@"杂项" ,@"旅途备忘" ,@"自定义"];
     _currentIndex = 0;
+    self.textField.delegate = self;
 }
 
 - (IBAction)saveBtnAction:(UIButton *)sender {
@@ -52,6 +53,14 @@
         [self.view addSubview:popLabel];
         [NSTimer scheduledTimerWithTimeInterval:1.0 target:popLabel selector:@selector(removeFromSuperview) userInfo:nil repeats:NO];
     }
+}
+
+//取消输入第一响应
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [self.textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark -UIPickerViewDataSource

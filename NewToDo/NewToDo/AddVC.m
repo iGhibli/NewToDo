@@ -10,7 +10,7 @@
 #import "Common.h"
 #import "DataBaseEngine.h"
 
-@interface AddVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
+@interface AddVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *adress;
 @property (weak, nonatomic) IBOutlet UIButton *imageBtn;
@@ -21,7 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.name.delegate = self;
+    self.adress.delegate = self;
 }
 
 - (IBAction)imageBtnAction:(UIButton *)sender {
@@ -72,6 +73,15 @@
         [DataBaseEngine saveListToListTable:infoDict];
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+//取消输入第一响应
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [self.name resignFirstResponder];
+    [self.adress resignFirstResponder];
+    return YES;
 }
 
 //调用相机和图库
