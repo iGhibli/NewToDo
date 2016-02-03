@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC368F7B1C61BA8E00C55C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */; };
+		CC368F811C621DBE00C55C42 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC368F801C621DBE00C55C42 /* SettingVC.m */; };
 		CC8C04981C6084980060ADCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C04971C6084980060ADCE /* main.m */; };
 		CC8C049B1C6084980060ADCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C049A1C6084980060ADCE /* AppDelegate.m */; };
 		CC8C04A11C6084980060ADCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8C049F1C6084980060ADCE /* Main.storyboard */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		CC368F7A1C61BA8E00C55C42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CC368F7F1C621DBE00C55C42 /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
+		CC368F801C621DBE00C55C42 /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
 		CC8C04931C6084980060ADCE /* NewToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8C04971C6084980060ADCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC8C04991C6084980060ADCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				CC8C04BC1C6087760060ADCE /* ChangInfoVC.m */,
 				CC8C04E91C60AE390060ADCE /* AddDetailVC.h */,
 				CC8C04EA1C60AE390060ADCE /* AddDetailVC.m */,
+				CC368F7F1C621DBE00C55C42 /* SettingVC.h */,
+				CC368F801C621DBE00C55C42 /* SettingVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				CC8C04E61C60993B0060ADCE /* DetailModel.m in Sources */,
 				CC8C04B71C6087490060ADCE /* AddVC.m in Sources */,
 				CC8C04DD1C608AF50060ADCE /* ListCell.m in Sources */,
+				CC368F811C621DBE00C55C42 /* SettingVC.m in Sources */,
 				CC8C04BA1C6087650060ADCE /* DetailVC.m in Sources */,
 				CC8C04B41C6085A10060ADCE /* HomeVC.m in Sources */,
 				CC8C04C11C6087EC0060ADCE /* DataBaseEngine.m in Sources */,

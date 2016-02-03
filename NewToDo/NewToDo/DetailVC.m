@@ -27,7 +27,6 @@ static NSString *detailCellID = @"DetailCellID";
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //tableView注册headerView的xib文件
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"detailHeaderView"];
 }

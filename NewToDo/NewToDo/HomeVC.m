@@ -10,6 +10,7 @@
 #import "ListModel.h"
 #import "ListCell.h"
 #import "DataBaseEngine.h"
+#import "SettingVC.h"
 
 @interface HomeVC ()
 @property (nonatomic, strong) NSMutableArray *sourceArray;
@@ -74,8 +75,9 @@ static NSString *listCellID = @"ListCellID";
     }else if ([segue.identifier isEqual: @"addSegue"]) {
         ListModel *model = self.sourceArray.lastObject;
         [segue.destinationViewController setValue:model.sort forKey:@"sort"];
+    }else {
+        
     }
 }
-
 
 @end
