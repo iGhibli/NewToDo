@@ -115,13 +115,6 @@ static NSString *detailCellID = @"DetailCellID";
 }
 
 #pragma mark - SectionHeader
-////section头标题
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    DetailModel *model = self.twoDimensionArray[section][0];
-//    NSArray *sortNames = @[@"行前事项" ,@"购物清单" ,@"文件/备份" ,@"资金" ,@"服装" ,@"个护/化妆" ,@"医疗/健康" ,@"电子数码" ,@"杂项" ,@"旅途备忘" ,@"自定义"];
-//    return sortNames[[model.sort intValue]];
-//}
-
 //section头高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 25;
