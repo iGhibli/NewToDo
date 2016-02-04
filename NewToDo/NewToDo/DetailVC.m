@@ -65,7 +65,8 @@ static NSString *detailCellID = @"DetailCellID";
 #pragma mark - ButtonAction
 - (IBAction)checkBtnAction:(UIButton *)sender {
     sender.selected = sender.selected ? NO : YES;
-    [DataBaseEngine updateDetailCheck:sender.selected ToTable:self.sort WithID:[[self getCurrentModelWithButton:sender].ID integerValue]];
+    DetailModel *model = [self getCurrentModelWithButton:sender];
+    [DataBaseEngine updateDetailCheck:sender.selected ToTable:self.sort WithID:[model.ID integerValue]];
 }
 
 - (IBAction)backAction:(UIButton *)sender {
@@ -81,12 +82,19 @@ static NSString *detailCellID = @"DetailCellID";
  */
 - (DetailModel *)getCurrentModelWithButton:(UIButton *)sender
 {
-    //获取ContentView
-    UIView *contentView = [sender superview];
     //获取当前Button所在cell的信息
-    DetailCell *currentCell = (DetailCell *)[contentView superview];
+    DetailCell *currentCell;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        // iOS 8.0+ code
+        //获取当前Button所在cell的信息
+        currentCell = (DetailCell *)[[sender superview] superview];
+    }else {
+        //获取当前Button所在cell的信息
+        currentCell = (DetailCell *)[[[sender superview] superview] superview];
+    }
     //获取当前的IndexPath
     NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:currentCell];
+    NSLog(@"IndexPath -->%ld---%ld",(long)currentIndexPath.section, (long)currentIndexPath.row);
     //得到当前Model
     DetailModel *currentModel = self.twoDimensionArray[currentIndexPath.section][currentIndexPath.row];
     return currentModel;
