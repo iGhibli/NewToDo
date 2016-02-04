@@ -43,6 +43,19 @@ static NSString *detailCellID = @"DetailCellID";
     [self.tableView reloadData];
 }
 
+- (void)refreshTableView
+{
+    _twoDimensionArray = nil;
+    for (int i = 0; i < 11; i++) {
+        NSArray *tempArray = [NSArray array];
+        tempArray = [DataBaseEngine getDetailModelsFromTable:self.sort WithSortIndex:i];
+        if (tempArray.count != 0) {
+            [_twoDimensionArray addObject:tempArray];
+        }
+    }
+//    [self.tableView reloadData];
+}
+
 - (void)changeShowAction:(UIButton *)sender
 {
     sender.selected = sender.selected ? NO : YES;
@@ -67,6 +80,7 @@ static NSString *detailCellID = @"DetailCellID";
     sender.selected = sender.selected ? NO : YES;
     DetailModel *model = [self getCurrentModelWithButton:sender];
     [DataBaseEngine updateDetailCheck:sender.selected ToTable:self.sort WithID:[model.ID integerValue]];
+    [self refreshTableView];
 }
 
 - (IBAction)backAction:(UIButton *)sender {
@@ -82,7 +96,7 @@ static NSString *detailCellID = @"DetailCellID";
  */
 - (DetailModel *)getCurrentModelWithButton:(UIButton *)sender
 {
-    //获取当前Button所在cell的信息
+    //获取当前设备版本信息，并作不同处理
     DetailCell *currentCell;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         // iOS 8.0+ code
@@ -94,7 +108,7 @@ static NSString *detailCellID = @"DetailCellID";
     }
     //获取当前的IndexPath
     NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:currentCell];
-    NSLog(@"IndexPath -->%ld---%ld",(long)currentIndexPath.section, (long)currentIndexPath.row);
+//    NSLog(@"IndexPath -->%ld---%ld",(long)currentIndexPath.section, (long)currentIndexPath.row);
     //得到当前Model
     DetailModel *currentModel = self.twoDimensionArray[currentIndexPath.section][currentIndexPath.row];
     return currentModel;
